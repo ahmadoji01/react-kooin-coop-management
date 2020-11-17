@@ -30,15 +30,15 @@ export const onJwtUserSignUp = ({email, password, name}) => {
 export const onJwtSignIn = ({email, password}) => {
   return async (dispatch) => {
     dispatch(fetchStart());
-    const body = {email, password};
+    const body = {identifier: email, password};
     try {
-      const res = await jwtAxios.post('auth', body);
-      localStorage.setItem('token', res.data.token);
-      dispatch(setJWTToken(res.data.token));
+      const res = await jwtAxios.post('http://localhost:1337/auth/local', body);
+      localStorage.setItem('token', res.data.jwt);
+      dispatch(setJWTToken(res.data.jwt));
       dispatch(loadJWTUser());
     } catch (err) {
-      console.log('error!!!!', err.response.data.error);
-      dispatch(fetchError(err.response.data.error));
+      console.log(err);
+      dispatch(fetchError(err));
     }
   };
 };
@@ -47,9 +47,13 @@ export const loadJWTUser = () => {
   return async (dispatch) => {
     dispatch(fetchStart());
     try {
-      const res = await jwtAxios.get('/auth');
+      const res = await jwtAxios.get('http://localhost:1337/users/me', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      });
       dispatch(fetchSuccess());
-      console.log('res.data', res.data);
       dispatch({
         type: UPDATE_AUTH_USER,
         payload: {
@@ -62,8 +66,8 @@ export const loadJWTUser = () => {
         },
       });
     } catch (err) {
-      console.log('error!!!!', err.response.error);
-      dispatch(fetchError(err.response.error));
+      console.log(err);
+      dispatch(fetchError(err));
     }
   };
 };
