@@ -2,11 +2,72 @@ import {authRole} from '../shared/constants/AppConst';
 
 const routesConfig = [
   {
-    id: 'app',
-    title: 'Application',
-    messageId: 'sidebar.application',
+    id: 'management',
+    title: 'Cooperative Management',
+    messageId: 'sidebar.coop.management',
     type: 'group',
     children: [
+      {
+        id: 'home',
+        title: 'Home',
+        messageId: 'sidebar.coop.home',
+        type: 'item',
+        icon: 'home',
+        auth: authRole.user,
+        url: '/coop/home',
+      },
+      {
+        id: 'savings',
+        title: 'Savings',
+        messageId: 'sidebar.coop.savings',
+        type: 'collapse',
+        icon: 'account_balance',
+        children: [
+          {
+            id: 'savingsReport',
+            title: 'Savings Report',
+            messageId: 'sidebar.coop.savings.report',
+            type: 'item',
+            icon: 'menu_book',
+            auth: authRole.user,
+            url: '/coop/savings-report',
+          },
+          {
+            id: 'addSaving',
+            title: 'Add Saving Data',
+            messageId: 'sidebar.coop.savings.add',
+            type: 'item',
+            icon: 'post_add',
+            url: '/coop/add-saving',
+          },
+        ],
+      },
+      {
+        id: 'lendings',
+        title: 'Lendings',
+        messageId: 'sidebar.coop.lendings',
+        type: 'collapse',
+        icon: 'monetization_on',
+        children: [
+          {
+            id: 'savingsReport',
+            title: 'Lendings Report',
+            messageId: 'sidebar.coop.lendings.report',
+            type: 'item',
+            icon: 'menu_book',
+            auth: authRole.user,
+            url: '/coop/lendings-report',
+          },
+          {
+            id: 'addSaving',
+            title: 'Add Lending Data',
+            messageId: 'sidebar.coop.lendings.add',
+            type: 'item',
+            icon: 'post_add',
+            url: '/coop/add-lending',
+          },
+        ],
+      },
       {
         id: 'dashboards',
         title: 'Dashboards',

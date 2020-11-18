@@ -5,6 +5,7 @@ import {
   GET_CRYPTO_DATA,
   GET_ECOMMERCE_DATA,
   GET_HC_DATA,
+  GET_SAVINGS_DATA,
   GET_METRICS_DATA,
   GET_WIDGETS_DATA,
 } from '../../shared/constants/ActionTypes';
@@ -17,6 +18,7 @@ const initialState = {
   metricsData: null,
   widgetsData: null,
   healthCare: null,
+  savingsData: null,
   academyData: null,
 };
 
@@ -68,6 +70,12 @@ const dashboardReducer = (state = initialState, action) => {
       return {
         ...state,
         healthCare: action.payload,
+      };
+
+    case GET_SAVINGS_DATA:
+      return {
+        ...state,
+        savingsData: action.payload,
       };
 
     default:

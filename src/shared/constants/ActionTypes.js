@@ -34,6 +34,9 @@ export const GET_CRYPTO_DATA = 'get_crypto_data';
 //CRYPTO-DASHBOARD
 export const GET_HC_DATA = 'get_hc_data';
 
+//CRYPTO-DASHBOARD
+export const GET_SAVINGS_DATA = 'get_savings_data';
+
 //METRICS-DASHBOARD
 export const GET_METRICS_DATA = 'get_metrics_data';
 

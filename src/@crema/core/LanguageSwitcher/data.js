@@ -6,6 +6,12 @@ const languageData = [
     icon: 'us',
   },
   {
+    languageId: 'bahasa',
+    locale: 'id',
+    name: 'Bahasa Indonesia',
+    icon: 'id',
+  },
+  {
     languageId: 'chinese',
     locale: 'zh',
     name: 'Chinese',

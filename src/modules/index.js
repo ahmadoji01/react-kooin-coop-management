@@ -2,6 +2,7 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 
 import {createRoutes} from '../@crema/utility/Utils';
+import {coopConfigs} from './coop';
 import {dashBoardConfigs} from './dashboard';
 import {muiComponentConfigs} from './muiComponents';
 import {thirdPartyConfigs} from './thirdParty';
@@ -17,6 +18,7 @@ import {menuLevelConfig} from './menu';
 
 const routeConfigs = [
   ...authRouteConfig,
+  ...coopConfigs,
   ...dashBoardConfigs,
   ...muiComponentConfigs,
   ...thirdPartyConfigs,

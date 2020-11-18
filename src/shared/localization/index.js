@@ -1,4 +1,5 @@
 import enLang from './entries/en-US';
+import idLang from './entries/id_ID';
 import zhLang from './entries/zh-Hans-CN';
 import arLang from './entries/ar_SA';
 import itLang from './entries/it_IT';
@@ -7,6 +8,7 @@ import frLang from './entries/fr_FR';
 
 const AppLocale = {
   en: enLang,
+  id: idLang,
   zh: zhLang,
   ar: arLang,
   it: itLang,

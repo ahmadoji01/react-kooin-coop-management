@@ -99,6 +99,27 @@ export const onGetHCData = () => {
   };
 };
 
+export const onGetSavingsData = () => {
+  return (dispatch) => {
+    dispatch({type: FETCH_START});
+    Api.get('/dashboard/health_care')
+      .then((data) => {
+        if (data.status === 200) {
+          dispatch({type: FETCH_SUCCESS});
+          dispatch({type: GET_HC_DATA, payload: data.data});
+        } else {
+          dispatch({
+            type: FETCH_ERROR,
+            payload: <IntlMessages id='message.somethingWentWrong' />,
+          });
+        }
+      })
+      .catch((error) => {
+        dispatch({type: FETCH_ERROR, payload: error.message});
+      });
+  };
+};
+
 export const onGetCrmData = () => {
   return (dispatch) => {
     dispatch({type: FETCH_START});
